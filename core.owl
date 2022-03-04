@@ -1,0 +1,126 @@
+@prefix : <http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/> .
+
+<http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/> rdf:type owl:Ontology ;
+                                                                            owl:versionIRI <http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/hasAspect
+:hasAspect rdf:type owl:ObjectProperty ;
+           rdfs:domain :capability ;
+           rdfs:range :capabilityAspect .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#contributesTo
+:contributesTo rdf:type owl:ObjectProperty ;
+               rdfs:domain :capability ;
+               rdfs:range :valuephase .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#partOf
+:partOf rdf:type owl:ObjectProperty ,
+                 owl:SymmetricProperty ;
+        rdfs:domain :valuephase ;
+        rdfs:range :valuestream .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/maturity
+:maturity rdf:type owl:DatatypeProperty ;
+          rdfs:domain :capabilityIncrement ;
+          rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/capabilityAspect
+:capabilityAspect rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/capabilityDimension
+:capabilityDimension rdf:type owl:Class ;
+                     rdfs:subClassOf :capabilityAspect .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/capabilityIncrement
+:capabilityIncrement rdf:type owl:Class ;
+                     rdfs:subClassOf :capabilityAspect .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/value
+:value rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#capability
+:capability rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#valuephase
+:valuephase rdf:type owl:Class ;
+            rdfs:subClassOf :value .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#valuestream
+:valuestream rdf:type owl:Class ;
+             rdfs:subClassOf :value .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/duiden_van_sporen
+:duiden_van_sporen rdf:type owl:NamedIndividual ,
+                            :capability ;
+                   :contributesTo :gebruik_maken_van_het_gouden_uur ;
+                   rdfs:label "Duiden van Sporen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/inwinnen_van_nieuwe_informatie
+:inwinnen_van_nieuwe_informatie rdf:type owl:NamedIndividual ,
+                                         :capability ;
+                                rdfs:label "inwinnen van nieuwe informatie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/material
+:material rdf:type owl:NamedIndividual ,
+                   :capabilityDimension .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/people
+:people rdf:type owl:NamedIndividual ,
+                 :capabilityDimension .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/capability-framework/proces
+:proces rdf:type owl:NamedIndividual ,
+                 :capabilityDimension .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#gebruik_maken_van_het_gouden_uur
+:gebruik_maken_van_het_gouden_uur rdf:type owl:NamedIndividual ,
+                                           :valuephase ;
+                                  :partOf :handelen_in_het_moment ;
+                                  rdfs:label "Gebruik maken van het gouden uur" .
+
+
+###  http://www.semanticweb.org/colin/ontologies/2022/2/untitled-ontology-2#handelen_in_het_moment
+:handelen_in_het_moment rdf:type owl:NamedIndividual ,
+                                 :valuestream ;
+                        rdfs:label "Handelen in het moment" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
